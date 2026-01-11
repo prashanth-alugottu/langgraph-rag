@@ -1,0 +1,5 @@
+.env
+.history
+.vector_db
+__pycache__
+app/.DS_Store
