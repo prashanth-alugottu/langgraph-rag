@@ -11,7 +11,7 @@ import faiss
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_community.vectorstores import FAISS
 
-from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+# from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 
 
 def upload_file(file_bytes: bytes, filename: str):
@@ -51,17 +51,17 @@ def upload_file(file_bytes: bytes, filename: str):
     )
     chunks = splitter.split_documents(docs)
     
-    # embeddings = OpenAIEmbeddings(
-    #     model=config.embedding_model_name,
-    #     api_key=config.open_api_key
-    # )
-    
-    embeddings = AzureOpenAIEmbeddings(
-    azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"),
-    api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    embeddings = OpenAIEmbeddings(
+        model=config.embedding_model_name,
+        api_key=config.open_api_key
     )
+    
+    # embeddings = AzureOpenAIEmbeddings(
+    # azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"),
+    # api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+    # azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    # api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    # )
 
 
     # Load or create FAISS safely
@@ -84,17 +84,17 @@ def upload_file(file_bytes: bytes, filename: str):
     }
     
 def get_vector_db():
-    # embeddings = OpenAIEmbeddings(
-    #     model=config.embedding_model_name,
-    #     api_key=config.open_api_key
-    # )
-    
-    embeddings = AzureOpenAIEmbeddings(
-    azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"),
-    api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    embeddings = OpenAIEmbeddings(
+        model=config.embedding_model_name,
+        api_key=config.open_api_key
     )
+    
+    # embeddings = AzureOpenAIEmbeddings(
+    # azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"),
+    # api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+    # azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    # api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    # )
      
     return FAISS.load_local(
             config.persist_directory,
