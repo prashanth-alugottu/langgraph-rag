@@ -10,3 +10,8 @@ app.include_router(query.router)
 @app.get("/")
 def health():
     return {"status": "ok"}
+
+
+@app.get("/helo")
+def health():
+    return {"status": "Congratulations."}
