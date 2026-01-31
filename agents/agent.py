@@ -1,16 +1,16 @@
 from langchain_openai import ChatOpenAI
 from graph.state import RAGState
 from services.uploading_service import get_vector_db
-from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+# from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 import os
 
-# llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
-llm = AzureChatOpenAI(
-    azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
-    api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+# llm = AzureChatOpenAI(
+#     azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
+#     api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+#     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+#     api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+# )
 
 
 def retrieve_node(state):
