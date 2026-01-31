@@ -14,4 +14,4 @@ def health():
 
 @app.get("/helo")
 def health():
-    return {"status": "Congratulations."}
+    return {"status": "Congratulations. "}
