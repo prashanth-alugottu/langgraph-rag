@@ -2,4 +2,4 @@ FROM python:3.11
 WORKDIR /
 COPY . .
 RUN pip install -r requirements.txt
-CMD ["python3", "main.py"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
