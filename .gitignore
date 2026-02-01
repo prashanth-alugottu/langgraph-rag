@@ -3,3 +3,4 @@
 .vector_db
 __pycache__
 app/.DS_Store
+vector_db
