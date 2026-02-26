@@ -21,7 +21,7 @@ def run_rag(query):
     }
 
     result = graph.invoke(state)
-    print("lkdlked : ",result)
+
     [(doc.page_content) for doc in result["retrieved_docs"]]
         
     return {
